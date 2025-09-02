@@ -10,6 +10,7 @@ import Input from '../components/Input';
 import ScreenWrapper from '../components/ScreenWrapper';
 import { theme } from '../constants/theme';
 import { hp, wp } from '../helpers/common';
+import { supabase } from '../lib/supabase';
 
 const Login = () => {
   const router = useRouter();
@@ -18,10 +19,26 @@ const Login = () => {
   const [loading, setLoading] = useState(false)
   const [eyeIcon, setEyeIcon] = useState("hide")
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if(!emailRef.current || !passwordRef.current) {
-      Alert.alert("Please fill all the fields")
+      Alert.alert("Por favor preencha todos os campos")
       return;
+    }
+
+    let email = emailRef.current.trim()
+    let password = passwordRef.current.trim()
+  
+    setLoading(true)
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+    setLoading(false)
+    console.log("Ocorreu um erro: ", error)
+    if(error) {
+      Alert.alert('Login', error.message)
+      
+      return
     }
   }
   return (
@@ -32,22 +49,22 @@ const Login = () => {
 
         {/* title */}
         <View>
-          <Text style={styles.welcomeText}>Welcome Back</Text>
+          <Text style={styles.welcomeText}>Bem-vindo de volta!</Text>
         </View>
 
         {/* form */}
         <View style={styles.form}>
           <Text style={{fontSize: hp(2), color: theme.colors.text}}>
-            Please login to continue
+            Por favor insira suas credenciais
           </Text>
 
           <Input 
-            placeholder="Email address"
+            placeholder="Endereço de email"
             icon={<Mail />}
             onChangeText={(value) => emailRef.current = value}
           />
           <Input 
-            placeholder="Password"
+            placeholder="Senha"
             icon={eyeIcon === "hide" ? <ViewIcon /> : <ViewIconSlash />}
             onChangeText={(value) => passwordRef.current = value}
             togglePassword={() => {
@@ -57,16 +74,16 @@ const Login = () => {
             secureTextEntry={eyeIcon === "hide" ? true : false}
           />
           <Text style={styles.forgotPassword}>
-            Forgot Password?
+            Esqueceu a senha?
           </Text>
           <Button title='Login' loading={loading} onPress={onSubmit} />
           
         </View>
         {/* footer */}
         <View style={styles.footer}>
-          <Text style={styles.footerText}>Don&apos;t have an account? </Text>
+          <Text style={styles.footerText}>Não possui uma conta?  </Text>
           <Pressable onPress={() => router.push("./signUp")}>
-            <Text style={[styles.footerText, {color: theme.colors.primary, fontWeight: theme.fonts.semibold}]}>Sign Up</Text>
+            <Text style={[styles.footerText, {color: theme.colors.primary, fontWeight: theme.fonts.semibold}]}>Cadastre-se</Text>
           </Pressable>
         </View>
       </View>

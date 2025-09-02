@@ -23,7 +23,7 @@ const SignUp = () => {
 
   const onSubmit = async () => {
     if(!emailRef.current || !passwordRef.current) {
-      Alert.alert("Please fill all the fields")
+      Alert.alert("Por favor preencha todos os campos")
       return;
     }
 
@@ -36,6 +36,12 @@ const SignUp = () => {
     const { data: {session}, error} = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        data: {
+          name
+        }
+      }
+      
     });
     setLoading(false)
     console.log("session: ", session);
@@ -53,27 +59,27 @@ const SignUp = () => {
 
         {/* title */}
         <View>
-          <Text style={styles.welcomeText}>Create an account</Text>
+          <Text style={styles.welcomeText}>Crie sua conta</Text>
         </View>
 
         {/* form */}
         <View style={styles.form}>
           <Text style={{fontSize: hp(2), color: theme.colors.text}}>
-            Please sign up to continue
+            Por favor crie uma conta para continuar
           </Text>
 
           <Input 
-            placeholder="Enter your name"
+            placeholder="Seu nome aqui"
             icon={<User />}
             onChangeText={(value) => nameRef.current = value}
           />
           <Input 
-            placeholder="Email address"
+            placeholder="Endereco de email"
             icon={<Mail />}
             onChangeText={(value) => emailRef.current = value}
           />
           <Input 
-            placeholder="Password"
+            placeholder="Senha"
             icon={eyeIcon === "hide" ? <ViewIcon /> : <ViewIconSlash />}
             onChangeText={(value) => passwordRef.current = value}
             togglePassword={() => {
@@ -88,9 +94,9 @@ const SignUp = () => {
         </View>
         {/* footer */}
         <View style={styles.footer}>
-          <Text style={styles.footerText}>Already have an account? </Text>
+          <Text style={styles.footerText}>Já tem uma conta? </Text>
           <Pressable onPress={() => router.push("./login")}>
-            <Text style={[styles.footerText, {color: theme.colors.primary, fontWeight: theme.fonts.semibold}]}>Log in</Text>
+            <Text style={[styles.footerText, {color: theme.colors.primary, fontWeight: theme.fonts.semibold}]}>Entrar</Text>
           </Pressable>
         </View>
       </View>
