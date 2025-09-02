@@ -14,24 +14,23 @@ const Welcome = () => {
         {/* image */}
         {/* title */}
         <View style={{gap: 20}}>
-          <Text style={styles.title}>Parenting Guru</Text>
+          <Text style={styles.title}>Nome do app</Text>
           <Text style={styles.punchline}>
-            Parenthood doesn&apos;t have to be hard so...
-            I&apos;m here to help!
+            Cuidar de quem você ama não precisa ser difícil...
           </Text>
         </View> 
 
         {/* footer */}
         <View style={styles.footer}>
           <Button 
-          title='Get Started'
+          title='Começar'
           buttonStyle={{marginHorizontal: wp(3)}}
           onPress={()=>{router.push('./signUp')}}
            />
 
           <View style={styles.bottomTextContainer}>
             <Text style={styles.loginText}>
-              Already have an account?
+              Já tem uma conta?
             </Text>
             <Pressable onPress={() => router.push('./login')}>
               <Text style={[styles.loginText, {color: theme.colors.primary, fontWeight: theme.fonts.semibold}]}>
