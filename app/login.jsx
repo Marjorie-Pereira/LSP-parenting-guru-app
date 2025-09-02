@@ -34,7 +34,7 @@ const Login = () => {
       password
     });
     setLoading(false)
-    console.log("Ocorreu um erro: ", error)
+    
     if(error) {
       Alert.alert('Login', error.message)
       

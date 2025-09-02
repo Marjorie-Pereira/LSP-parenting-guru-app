@@ -1,14 +1,11 @@
-import ScreenWrapper from "@/components/ScreenWrapper";
-import { useRouter } from "expo-router";
-import { Button, Text } from "react-native";
+import Loading from "@/components/Loading";
+import { View } from "react-native";
 
 export default function Index() {
-  const router = useRouter();
   return (
-    <ScreenWrapper bg={'#E3E2EB'}>
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-      <Button title="welcome" onPress={() => router.push('./welcome')}/>
-    </ScreenWrapper>
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Loading />
+    </View>
   );
 }
 
