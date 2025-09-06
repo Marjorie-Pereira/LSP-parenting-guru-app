@@ -10,7 +10,7 @@ const Button = ({
     loading=false,
     hasShadow=true,
 }) => {
-    const shadowStyle ={
+    const shadowStyle = {
         shadowColor: theme.colors.dark,
         shadowOffset: {
             width: 0,
@@ -19,6 +19,7 @@ const Button = ({
         shadowOpacity: 0.2,
         shadowRadius: 8,
         elevation: 4
+        
     }
 
     if(loading) {

@@ -2,6 +2,7 @@ import { Stack, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { AuthProvider, useAuth } from "../contexts/AuthContext";
 import { supabase } from "../lib/supabase";
+
 const _layout = () => {
   return (
     <AuthProvider>
@@ -27,7 +28,10 @@ const MainLayout = () => {
     })
   }, [])
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <Stack screenOptions={{ headerShown: false }} />
+    
+  );
 }
 
 export default _layout
