@@ -1,10 +1,11 @@
-import { Alert, Button, StyleSheet, Text } from 'react-native';
-import ScreenWrapper from '../../components/ScreenWrapper';
-import { useAuth } from '../../contexts/AuthContext';
-import { supabase } from '../../lib/supabase';
+import Button from '@/components/Button';
+import ScreenWrapper from '@/components/ScreenWrapper';
+import { supabase } from '@/lib/supabase';
+import { Alert, Text } from 'react-native';
+
 
 const Home = () => {
-    const { setAuth } = useAuth();
+    
     const onLogout = async () => {
         
         const { error } = await supabase.auth.signOut();
@@ -15,12 +16,13 @@ const Home = () => {
 
   return (
     <ScreenWrapper>
-      <Text>Home</Text>
+      
+      <Text>Odeio react native</Text>
       <Button title='Logout' onPress={onLogout} />
     </ScreenWrapper>
+    
   )
 }
 
 export default Home
 
-const styles = StyleSheet.create({})
