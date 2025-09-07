@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { theme } from '../constants/theme';
 import { hp } from '../helpers/common';
 
-const Input = ({pressable = false, ...props}) => {
+const Input = ( {...props}) => {
   return (
     <View style={[styles.container, props.containerStyles && props.containerStyles]}>
       

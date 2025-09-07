@@ -3,8 +3,8 @@ import { hp } from '@/helpers/common'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import Loading from './Loading'
 const Button = ({
-    buttonStyle,
-    textStyle,
+    buttonStyle = {},
+    textStyle = {},
     title='',
     onPress=()=>{},
     loading=false,
