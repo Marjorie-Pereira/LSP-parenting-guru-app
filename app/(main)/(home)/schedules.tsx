@@ -1,10 +1,13 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-export default function Settings() {
+export default function Schedules() {
+  
+  
+
   return (
     <View>
-      <Text>settings</Text>
+      <Text>Schedules</Text>
     </View>
   )
 }
